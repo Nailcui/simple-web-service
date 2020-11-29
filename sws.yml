@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sws-deployment
+  labels:
+    app: sws
+spec:
+  selector:
+    matchLabels:
+      app: sws
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: sws
+    spec:
+      containers:
+        - name: sws
+          image: sws:v0.1
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
